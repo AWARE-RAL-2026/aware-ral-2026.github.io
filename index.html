@@ -61,7 +61,7 @@
     }
 
     .hero-inner {
-      max-width: 1080px;
+      max-width: 1440px;
       margin: 0 auto;
       text-align: center;
     }
@@ -83,10 +83,10 @@
     }
 
     .publication-title {
-      max-width: 1000px;
+      max-width: 1380px;
       margin: 0 auto 1.25rem !important;
       color: var(--page-ink);
-      font-size: clamp(2.15rem, 5vw, 4rem) !important;
+      font-size: clamp(2rem, 3.5vw, 3.1rem) !important;
       font-weight: 800 !important;
       line-height: 1.1 !important;
       letter-spacing: -0.035em;
@@ -146,7 +146,41 @@
     }
 
     .project-link .icon {
-      margin-right: 0.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.2rem;
+      margin-right: 0.35rem;
+    }
+
+    .project-link .icon svg {
+      width: 1.05rem;
+      height: 1.05rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2;
+    }
+
+    .project-link .icon-paper {
+      color: #2f6fbe;
+    }
+
+    .project-link .icon-pipeline {
+      color: #2a9d8f;
+    }
+
+    .project-link .icon-pdf {
+      color: #d1495b;
+    }
+
+    .project-link .icon-simulation {
+      color: #e09f3e;
+    }
+
+    .project-link .icon-robot {
+      color: #7b61a8;
     }
 
     .page-section {
@@ -504,6 +538,10 @@
         font-size: 2.15rem !important;
       }
 
+      .desktop-title-break {
+        display: none;
+      }
+
       .abstract-box p {
         font-size: 1rem;
         text-align: left;
@@ -531,34 +569,21 @@
       Give only this PDF a shorter, adaptive viewer so the card no longer
       contains a large empty area below the page.
     */
-    .pdf-card-simulation-wide {
+    .pdf-grid.is-single.simulation-pdf-grid {
+      max-width: none;
       width: 100%;
-      max-width: 960px;
+    }
+
+    .simulation-pdf-card {
+      width: 100%;
+      max-width: none;
       margin: 0 auto;
     }
 
-    .pdf-frame-simulation-wide {
-      height: auto;
-      min-height: 300px;
-      max-height: 340px;
-      aspect-ratio: 2083.56 / 530.16;
-      background: #ffffff;
-    }
-
-    @media (max-width: 820px) {
-      .pdf-frame-simulation-wide {
-        height: auto;
-        min-height: 260px;
-        max-height: none;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .pdf-frame-simulation-wide {
-        height: 240px;
-        min-height: 240px;
-        aspect-ratio: auto;
-      }
+    .cruise-pdf-card {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -573,32 +598,46 @@
       <div class="hero-body">
         <div class="hero-inner">
           <div class="project-acronym">AWARE</div>
-          <h1 class="title publication-title">Unleashing the Agility of Wheeled-Legged Robots for High-Dynamic Reflexive Obstacle Evasion</h1>
+          <h1 class="title publication-title">Unleashing the Agility of Wheeled-Legged Robots<br class="desktop-title-break">for High-Dynamic Reflexive Obstacle Evasion</h1>
           <p class="publication-subtitle">
             Adaptive Wheeled-Legged Avoidance and Reflexive Evasion
           </p>
 
-          <!-- TODO: Replace the two visible lines below with your real authors and affiliation. -->
           <div class="publication-authors">
-            <span class="author-placeholder">Author Name(s)</span>
-            <span class="affiliation-placeholder">Institution / Laboratory</span>
+            <span class="author-placeholder">
+              Yongen Zhao<sup>1,3</sup>, Zihao Xu<sup>2</sup>, Wenzhi Lu<sup>1</sup>,
+              Zhen Chu<sup>4</sup>, Ce Hao<sup>2,3</sup>
+            </span>
+            <span class="affiliation-placeholder">
+              <sup>1</sup>School of Mechanical Engineering, Tianjin University, Tianjin, China
+              &nbsp;&middot;&nbsp;
+              <sup>2</sup>School of Computing, National University of Singapore, Singapore
+              <br>
+              <sup>3</sup>Beijing Zhongguancun Academy, Beijing, China
+              &nbsp;&middot;&nbsp;
+              <sup>4</sup>DeepRobotics, Hangzhou, China
+            </span>
           </div>
 
           <div class="link-row" aria-label="Project navigation">
+            <a class="button project-link" href="https://arxiv.org/pdf/2604.23761" target="_blank" rel="noopener">
+              <span class="icon icon-paper" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5A2.5 2.5 0 0 0 17.5 16H6.5A2.5 2.5 0 0 0 4 18.5V5.5Z"></path><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"></path><path d="M8 7h8M8 10h8"></path></svg></span>
+              <span>Paper</span>
+            </a>
             <a class="button project-link" href="#pipeline">
-              <span class="icon"><i class="fas fa-project-diagram" aria-hidden="true"></i></span>
+              <span class="icon icon-pipeline" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="5" rx="1"></rect><rect x="15" y="3" width="6" height="5" rx="1"></rect><rect x="9" y="16" width="6" height="5" rx="1"></rect><path d="M6 8v4h12V8M12 12v4"></path></svg></span>
               <span>Pipeline</span>
             </a>
             <a class="button project-link" href="#simulation-experiments">
-              <span class="icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></span>
+              <span class="icon icon-pdf" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v5h5M8 16h2.5a1.5 1.5 0 0 0 0-3H8v5M14 13h2a1.5 1.5 0 0 1 0 3h-2v-3ZM14 16h2"></path></svg></span>
               <span>Simulation PDFs</span>
             </a>
             <a class="button project-link" href="#simulation-demo">
-              <span class="icon"><i class="fas fa-play-circle" aria-hidden="true"></i></span>
+              <span class="icon icon-simulation" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m10 9 5 3-5 3V9Z"></path></svg></span>
               <span>Simulation Demo</span>
             </a>
             <a class="button project-link" href="#real-robot-demo">
-              <span class="icon"><i class="fas fa-robot" aria-hidden="true"></i></span>
+              <span class="icon icon-robot" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="12" rx="2"></rect><path d="M12 4v3M8 12h.01M16 12h.01M9 16h6M3 11v4M21 11v4"></path></svg></span>
               <span>Real Robot Demo</span>
             </a>
           </div>
@@ -612,7 +651,7 @@
         <h2 class="title section-title">Abstract</h2>
         <div class="abstract-box">
           <p>
-            Wheeled-legged robots combine the energy efficiency of wheeled locomotion with the terrain adaptability of legged systems, making them promising platforms for agile mobility in complex and dynamic environments. However, enabling high-dynamic reflexive evasion against fast-moving obstacles remains challenging due to the hybrid morphology, mode coupling, and non-holonomic constraints of such platforms. In this work, we propose <strong>AWARE</strong> (Adaptive Wheeled-Legged Avoidance and Reflexive Evasion), a hierarchical reinforcement learning framework for high-dynamic obstacle avoidance in wheeled-legged robots. The proposed system naturally exhibits diverse emergent gaits and evasive behaviors, including forward lunge and lateral dodge, thereby leveraging the robot's hybrid morphology to enhance agility under highly dynamic threats. Evaluations in Isaac Lab and on the physical M20 platform show that AWARE enables short-reaction-time reflexive evasion and elicits behaviorally distinct strategies. These results demonstrate the effectiveness of the proposed framework in the evaluated settings and illustrate how the wheeled-legged morphology can support distinct evasive behaviors.
+            Wheeled-legged robots combine the energy efficiency of wheeled locomotion with the terrain adaptability of legged systems, making them promising platforms for agile mobility in complex and dynamic environments. However, enabling high-dynamic reflexive evasion against fast-moving obstacles remains challenging due to the hybrid morphology, mode coupling, and non-holonomic constraints of such platforms. In this work, we propose <strong>AWARE</strong> (Adaptive Wheeled-Legged Avoidance and Reflexive Evasion), a hierarchical reinforcement learning framework for high-dynamic obstacle avoidance in wheeled-legged robots. The proposed system naturally exhibits diverse emergent gaits and evasive behaviors, including forward lunge and lateral dodge, thereby leveraging the robot's hybrid morphology to enhance agility under highly dynamic threats. Extensive experiments in Isaac Lab simulation and real-world deployment on the M20 platform across diverse dynamic scenarios demonstrate that AWARE achieves robust and agile obstacle avoidance while revealing behaviorally distinct evasive strategies. These results highlight both the practical effectiveness of AWARE and the intrinsic reflexive agility of wheeled-legged robots.
           </p>
         </div>
       </div>
@@ -636,20 +675,20 @@
     </section>
 
     <section id="simulation-experiments" class="page-section">
-      <div class="content-container">
+      <div class="wide-container">
         <p class="section-kicker">Evaluation</p>
         <h2 class="title section-title">Simulation Experiments</h2>
         <p class="section-lead">Simulation results are organized into the general reflexive-evasion demonstration and the cruise-evade switching experiments.</p>
 
-        <div class="pdf-grid is-single">
-          <article class="pdf-card pdf-card-simulation-wide">
-            <div class="pdf-card-header">
-              <h3 class="pdf-card-title">Simulation Demo</h3>
+        <div class="pdf-grid is-single simulation-pdf-grid">
+          <article class="clean-pdf-card simulation-pdf-card">
+            <h3 class="clean-pdf-title">Simulation Demo</h3>
+            <div class="pdf-canvas-stack" data-pdf="static/pdfs/simulation_demo.pdf" aria-label="Simulation demo PDF preview">
+              <div class="pdf-loading">Loading Simulation Demo preview...</div>
             </div>
-            <iframe class="pdf-frame pdf-frame-simulation-wide" src="static/pdfs/simulation_demo.pdf#view=FitH&toolbar=0&navpanes=0" title="Simulation demo PDF"></iframe>
           </article>
 
-          <article class="clean-pdf-card">
+          <article class="clean-pdf-card cruise-pdf-card">
             <h3 class="clean-pdf-title">Cruise-Evade</h3>
             <div class="pdf-canvas-stack" data-pdf="static/pdfs/cruise-evade.pdf" aria-label="Cruise-Evade PDF preview">
               <div class="pdf-loading">Loading Cruise-Evade preview...</div>
@@ -666,7 +705,6 @@
 
         <div class="demo-group">
           <h3 class="subsection-heading">Reflexive Evasion Demo</h3>
-          <p class="subsection-description">Two emergent evasive behaviors are displayed side by side.</p>
 
           <div class="video-grid grid-2">
             <figure class="video-card">
@@ -693,23 +731,8 @@
 
         <div class="demo-group">
           <h3 class="subsection-heading">Cruise-Evade Switch</h3>
-          <p class="subsection-description">Ten videos are arranged as two centered rows of five on a wide screen.</p>
 
-          <!--
-            IMPORTANT: Put the following MP4 files inside:
-            static/videos/cruise-evade/
-            Paths and capitalization must match exactly.
-          -->
-          <div class="video-grid grid-5">
-            <figure class="video-card">
-              <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
-                  <source src="static/videos/cruise-evade/cruise_evade_dual_4k_2026-07-17.mp4" type="video/mp4">
-                </video>
-              </div>
-              <figcaption class="video-caption">Cruise-Evade Dual 4K</figcaption>
-            </figure>
-
+          <div class="video-grid grid-3">
             <figure class="video-card">
               <div class="video-shell">
                 <video controls muted loop playsinline preload="metadata">
@@ -719,7 +742,6 @@
               <figcaption class="video-caption">Cruise-Evade Dual</figcaption>
             </figure>
 
-            <!-- The TXT file lists the same filename twice. This third card intentionally uses the same path. -->
             <figure class="video-card">
               <div class="video-shell">
                 <video controls muted loop playsinline preload="metadata">
@@ -732,69 +754,11 @@
             <figure class="video-card">
               <div class="video-shell">
                 <video controls muted loop playsinline preload="metadata">
-                  <source src="static/videos/cruise-evade/Flat-Cruise-Evade-V1_2026-07-17_2310.mp4" type="video/mp4">
-                </video>
-              </div>
-              <figcaption class="video-caption">Flat Cruise-Evade 18</figcaption>
-            </figure>
-
-            <figure class="video-card">
-              <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
-                  <source src="static/videos/cruise-evade/Flat-Cruise-Evade-V1_2026-07-18_0250_y-0.5_line2.mp4" type="video/mp4">
-                </video>
-              </div>
-              <figcaption class="video-caption">Flat Cruise-Evade V1 — Line 2</figcaption>
-            </figure>
-
-            <figure class="video-card">
-              <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
-                  <source src="static/videos/cruise-evade/Flat-Cruise-Evade-V1_2026-07-18_0257_y0_line1_1080p.mp4" type="video/mp4">
-                </video>
-              </div>
-              <figcaption class="video-caption">Flat Cruise-Evade V1 — Line 1</figcaption>
-            </figure>
-
-            <figure class="video-card">
-              <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
-                  <source src="static/videos/cruise-evade/Flat-Cruise-Evade-V2_2026-07-18_0325_trigger5_vmax5.5_acc12_headless_1080p.mp4" type="video/mp4">
-                </video>
-              </div>
-              <figcaption class="video-caption">Flat Cruise-Evade V2 — Trigger 5</figcaption>
-            </figure>
-
-            <figure class="video-card">
-              <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
-                  <source src="static/videos/cruise-evade/Flat-Cruise-Evade-V2_2026-07-18_0331_trigger4_vmax5.5_acc12_delay0.8_headless_1080p.mp4" type="video/mp4">
-                </video>
-              </div>
-              <figcaption class="video-caption">Flat Cruise-Evade V2 — Trigger 4</figcaption>
-            </figure>
-
-            <figure class="video-card">
-              <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
-                  <source src="static/videos/cruise-evade/Flat-Cruise-Evade-V3_2026-07-18_1636_y-0.5_line2_recede11m_yJump4999_wheelsLocked_headless_1080p.mp4" type="video/mp4">
-                </video>
-              </div>
-              <figcaption class="video-caption">Flat Cruise-Evade V3 — Line 2</figcaption>
-            </figure>
-
-            <figure class="video-card">
-              <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
                   <source src="static/videos/cruise-evade/Flat-Cruise-Evade-V3_2026-07-18_1637_y0_line1_recede11m_yJump4999_wheelsLocked_headless_1080p.mp4" type="video/mp4">
                 </video>
               </div>
               <figcaption class="video-caption">Flat Cruise-Evade V3 — Line 1</figcaption>
             </figure>
-          </div>
-
-          <div class="path-note">
-            Video directory used by this section: <code>static/videos/cruise-evade/</code>. The TXT note contains one duplicate filename, so the generated page preserves all ten listed entries; replace the third source path if that duplicate was accidental.
           </div>
         </div>
       </div>
@@ -804,7 +768,6 @@
       <div class="content-container">
         <p class="section-kicker">Physical Platform</p>
         <h2 class="title section-title">Real Robot Demonstration</h2>
-        <p class="section-lead">The real-robot demonstration document is embedded below.</p>
 
         <div class="pdf-grid is-single">
           <article class="clean-pdf-card">
@@ -824,7 +787,6 @@
 
         <div class="demo-group">
           <h3 class="subsection-heading">Mixed Mode</h3>
-          <p class="subsection-description">Two mixed-mode demonstrations are arranged horizontally.</p>
 
           <div class="video-grid grid-2">
             <figure class="video-card">
@@ -849,7 +811,6 @@
 
         <div class="demo-group">
           <h3 class="subsection-heading">Navigation-Level Evasion</h3>
-          <p class="subsection-description">Three navigation-level demonstrations are arranged in one horizontal row.</p>
 
           <div class="video-grid grid-3">
             <figure class="video-card">
@@ -883,9 +844,8 @@
 
         <div class="demo-group">
           <h3 class="subsection-heading">Reflexive Evasion</h3>
-          <p class="subsection-description">Eight demonstrations use a five-item first row and a centered three-item second row on a wide screen.</p>
 
-          <div class="video-grid grid-5">
+          <div class="video-grid grid-2">
             <figure class="video-card">
               <div class="video-shell">
                 <video controls muted loop playsinline preload="metadata">
@@ -958,10 +918,6 @@
               <figcaption class="video-caption">Y Direction — Box</figcaption>
             </figure>
           </div>
-        </div>
-
-        <div class="path-note">
-          Real-robot directories used above: <code>static/videos/REAL-ROBOT/mixed_mode/</code>, <code>static/videos/REAL-ROBOT/navigation-level_evasion/</code>, and <code>static/videos/REAL-ROBOT/reflexive_evasion/</code>.
         </div>
       </div>
     </section>
