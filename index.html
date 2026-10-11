@@ -409,6 +409,21 @@
       max-width: 1420px;
     }
 
+    .simulation-video-container {
+      width: min(100%, 2790px);
+    }
+
+    .video-grid.cruise-evade-video-grid {
+      --columns: 3;
+      --gap: 1.3rem;
+      max-width: 2790px;
+    }
+
+    .cruise-evade-video-grid .video-shell video {
+      transform: scale(1.95);
+      transform-origin: center center;
+    }
+
     .video-card {
       flex: 0 1 calc((100% - (var(--columns) - 1) * var(--gap)) / var(--columns));
       min-width: 0;
@@ -531,6 +546,11 @@
         --columns: 2;
         max-width: 720px;
       }
+
+      .video-grid.cruise-evade-video-grid {
+        --columns: 1;
+        max-width: 720px;
+      }
     }
 
     @media (max-width: 560px) {
@@ -582,7 +602,7 @@
 
     .cruise-pdf-card {
       width: 100%;
-      max-width: 960px;
+      max-width: 576px;
       margin: 0 auto;
     }
   </style>
@@ -665,7 +685,6 @@
       <div class="content-container">
         <p class="section-kicker">Method</p>
         <h2 class="title section-title">Pipeline</h2>
-        <p class="section-lead">A compact preview of the complete AWARE system pipeline.</p>
 
         <div class="pdf-grid is-single">
           <article class="clean-pdf-card">
@@ -703,7 +722,7 @@
     </section>
 
     <section id="simulation-demo" class="page-section is-soft">
-      <div class="wide-container">
+      <div class="wide-container simulation-video-container">
         <p class="section-kicker">Simulation Videos</p>
         <h2 class="title section-title">Simulation Demo</h2>
 
@@ -736,10 +755,10 @@
         <div class="demo-group">
           <h3 class="subsection-heading">Cruise-Evade Switch</h3>
 
-          <div class="video-grid grid-3">
+          <div class="video-grid grid-3 cruise-evade-video-grid">
             <figure class="video-card">
               <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
+                <video controls autoplay muted loop playsinline preload="metadata">
                   <source src="static/videos/cruise-evade/cruise_evade_dual_2026-07-16.mp4" type="video/mp4">
                 </video>
               </div>
@@ -748,7 +767,7 @@
 
             <figure class="video-card">
               <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
+                <video controls autoplay muted loop playsinline preload="metadata">
                   <source src="static/videos/cruise-evade/Flat-Cruise-Evade-18_2352_vmax3_acc5_trigger3_ball5_cmdHold0_videoHold4_recover0.2_initx-1_wheelsUnlocked_headless_1080p.mp4" type="video/mp4">
                 </video>
               </div>
@@ -757,7 +776,7 @@
 
             <figure class="video-card">
               <div class="video-shell">
-                <video controls muted loop playsinline preload="metadata">
+                <video controls autoplay muted loop playsinline preload="metadata">
                   <source src="static/videos/cruise-evade/Flat-Cruise-Evade-V3_2026-07-18_1637_y0_line1_recede11m_yJump4999_wheelsLocked_headless_1080p.mp4" type="video/mp4">
                 </video>
               </div>
@@ -995,7 +1014,8 @@
         const videoObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             const video = entry.target;
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+            const isCruiseEvadeVideo = Boolean(video.closest(".cruise-evade-video-grid"));
+            if (entry.isIntersecting && (entry.intersectionRatio >= 0.55 || isCruiseEvadeVideo)) {
               const playPromise = video.play();
               if (playPromise && typeof playPromise.catch === "function") {
                 playPromise.catch(() => {
